@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APP TASK</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #4a4a4a;
+            margin-bottom: 20px;
+        }
+
+        .app-task-form {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .app-task-form div {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="text"]:focus,
+        textarea:focus {
+            border-color: #66afe9;
+            outline: none;
+        }
+
+        button {
+            background-color: #5cb85c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 10px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #4cae4c;
+        }
+
+        #task-list {
+            list-style: none;
+            padding: 0;
+            max-width: 400px;
+            margin: 20px auto 0;
+        }
+
+        #task-list li {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 10px;
+            margin-bottom: 10px;
+            transition: background-color 0.3s;
+        }
+
+        #task-list li:hover {
+            background-color: #f9f9f9;
+        }
+
+    </style>
+</head>
+<body>
+    <div>
+        <h1>
+            to do application
+        </h1>
+        <form action="#" method="post" class="app-task-form">
+            <div>
+                <label for="task-name">task name:</label>
+                <input type="text" name="task-name" id="task-name" placeholder="take breakfast">
+            </div>
+            <div>
+                <label for="task-description">task description</label>
+                <textarea name="task-description" id="task-description" placeholder="prepare orange juice"></textarea>
+            </div>
+            <div>
+                <button type="submit">add task</button>
+            </div>
+        </form>
+        <ul id="task-list">
+            
+        </ul>
+    </div>
+    
+<script>
+//const apiKey = "live_ZNta00WEZmxbyaXy91H2QuNCFpdHoFYGJviQw5IDWWmICYI0NCaePWDZdizc16ft";
+const form = document.querySelector(".app-task-form");
+const taskName = document.querySelector("#task-name");
+const taskDescription = document.querySelector("#task-description");
+const button = document.querySelector("button");
+const taskList = document.querySelector("#task-list");
+
+form.addEventListener("submit",(event) => {
+    event.preventDefault(); //Esto evita que se mande el formulario por http al action del formulario
+    const taskNameValue = taskName.value;
+    console.log(taskNameValue);
+
+    const taskDescriptionValue = taskDescription.value;
+    console.log(taskDescriptionValue);
+
+    const taskItem = document.createElement("li");
+    taskItem.innerText = taskNameValue + "\n"+ taskDescriptionValue;
+
+    taskList.appendChild(taskItem);
+    taskName.value = "";
+    taskDescription.value = "";
+})
+
+</script>
+
+</body>
+</html>
